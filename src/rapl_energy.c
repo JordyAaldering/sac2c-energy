@@ -12,8 +12,6 @@ void energy_start()
 
 void energy_stop()
 {
-    sleep(1);
-
     rapl_amd_stop(amd_ptr, &amd_elapsed_ptr);
     rapl_intel_stop(intel_ptr, &intel_elapsed_ptr);
 }

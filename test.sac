@@ -1,7 +1,46 @@
 int main()
 {
+    p = 1000;
+    q = 2000;
+    r = 1500;
+    a = _reshape_VxA_([p, q], iota(_mul_SxS_(p, q)));
+    b = _reshape_VxA_([q, r], iota(_mul_SxS_(q, r)));
+
     Energy::start();
+
+    res = matmul(a, b);
+
     Energy::stop();
     Energy::print();
-    return 0;
+
+    return res[[0,0]];
+}
+
+/**
+ * Matrix multiplication, just so that we do some work in between start and stop.
+ */
+
+int[n] iota(int n)
+{
+    return { [i] -> i | [i] < [n] };
+}
+
+int[d:shp] sel(int[n] idx, int[n:_,d:shp] arr)
+{
+    return { iv -> _sel_VxA_(_cat_VxV_(idx, iv), arr) | iv < shp };
+}
+
+inline int +(int a, int b) { return _add_SxS_(a, b); }
+
+int sum(int[n] a)
+{
+    return with {
+        ([0] <= iv < [n]) : a[iv];
+    } : fold (+, 0);
+}
+
+int[p,r] matmul (int[p,q] a, int[q,r] b)
+{
+    bT = { [i,j] -> b[j,i] | [i,j] < [r,q] };
+    return { [i,j] -> sum (_mul_VxV_(a[[i]], bT[[j]])) | [i,j] < [p,r] };
 }
