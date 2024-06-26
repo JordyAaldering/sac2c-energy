@@ -1,6 +1,6 @@
 class Energy;
 
-classtype int;
+classtype bool;
 
 export all;
 
@@ -8,23 +8,29 @@ objdef Energy theEnergy = create_energy();
 
 Energy create_energy()
 {
-    return to_Energy(0);
+    return to_Energy(true);
 }
 
-external int start_energy(int i);
-    #pragma linkname "start"
+external void start();
+    #pragma linkname "energy_start"
     #pragma linkobj "/usr/local/lib/librapl_energy_c.a"
     #pragma linkobj "src/rapl_energy.o"
     #pragma effect Energy::theEnergy
 
-external int stop_energy(int i);
-    #pragma linkname "stop"
+external void stop();
+    #pragma linkname "energy_stop"
     #pragma linkobj "/usr/local/lib/librapl_energy_c.a"
     #pragma linkobj "src/rapl_energy.o"
     #pragma effect Energy::theEnergy
 
-external int print_energy(int i);
-    #pragma linkname "print"
+external void print();
+    #pragma linkname "energy_print"
+    #pragma linkobj "/usr/local/lib/librapl_energy_c.a"
+    #pragma linkobj "src/rapl_energy.o"
+    #pragma effect Energy::theEnergy
+
+external void free();
+    #pragma linkname "energy_free"
     #pragma linkobj "/usr/local/lib/librapl_energy_c.a"
     #pragma linkobj "src/rapl_energy.o"
     #pragma effect Energy::theEnergy

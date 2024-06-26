@@ -1,10 +1,7 @@
-use Energy: all;
-
 int main()
 {
-    res = 0;
-    res = start_energy(res);
-    res = stop_energy(res);
-    res = print_energy(res);
+    Energy::start();
+    Energy::stop();
+    Energy::print();
     return 0;
 }

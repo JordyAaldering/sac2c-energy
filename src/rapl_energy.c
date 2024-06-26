@@ -4,13 +4,13 @@
 static void *amd_ptr, *amd_elapsed_ptr;
 static void *intel_ptr, *intel_elapsed_ptr;
 
-void start()
+void energy_start()
 {
     rapl_amd_start(&amd_ptr);
     rapl_intel_start(&intel_ptr);
 }
 
-void stop()
+void energy_stop()
 {
     sleep(1);
 
@@ -18,8 +18,14 @@ void stop()
     rapl_intel_stop(intel_ptr, &intel_elapsed_ptr);
 }
 
-void print()
+void energy_print()
 {
     rapl_print(amd_elapsed_ptr);
     rapl_print(intel_elapsed_ptr);
+}
+
+void energy_free()
+{
+    rapl_amd_free(amd_ptr, amd_elapsed_ptr);
+    rapl_intel_free(intel_ptr, intel_elapsed_ptr);
 }
