@@ -3,3 +3,8 @@ all:
 	cc -std=c99 -c -o src/rapl_energy.o src/rapl_energy.c
 	../sac2c/build_d/sac2c_d -v0 Energy.sac
 	../sac2c/build_d/sac2c_d -v0 -noprelude test.sac
+
+mt:
+	cc -std=c99 -c -o src/rapl_energy.o src/rapl_energy.c
+	../sac2c/build_d/sac2c_d -v0 -t mt_pth Energy.sac
+	../sac2c/build_d/sac2c_d -v0 -t mt_pth -noprelude test.sac

@@ -1,8 +1,8 @@
 int main()
 {
-    p = 1000;
-    q = 2000;
-    r = 1500;
+    p = 2000;
+    q = 4000;
+    r = 3000;
     a = _reshape_VxA_([p, q], iota(_mul_SxS_(p, q)));
     b = _reshape_VxA_([q, r], iota(_mul_SxS_(q, r)));
 
