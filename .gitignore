@@ -1,0 +1,4 @@
+host/
+tree/
+a.out*
+*.o
