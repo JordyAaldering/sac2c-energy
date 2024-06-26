@@ -1,6 +1,12 @@
 
 # SaC energy module
 
+## Prerequisites
+
+Install `rapl-energy-c` from https://github.com/JordyAaldering/rapl-energy.
+
+## Example
+
 Running `sudo ./a.out` gives the following output for me.
 
 ```

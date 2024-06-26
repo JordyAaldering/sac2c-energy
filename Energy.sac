@@ -11,23 +11,20 @@ Energy create_energy()
     return to_Energy(0);
 }
 
-// For now these paths are tailored to my specific setup; sorry about that
-// librapl_energy_c lives in https://github.com/JordyAaldering/rapl-energy
-
 external int start_energy(int i);
     #pragma linkname "start"
-    #pragma linkobj "../rapl-energy/target/debug/librapl_energy_c.a"
+    #pragma linkobj "/usr/local/lib/librapl_energy_c.a"
     #pragma linkobj "src/rapl_energy.o"
     #pragma effect Energy::theEnergy
 
 external int stop_energy(int i);
     #pragma linkname "stop"
-    #pragma linkobj "../rapl-energy/target/debug/librapl_energy_c.a"
+    #pragma linkobj "/usr/local/lib/librapl_energy_c.a"
     #pragma linkobj "src/rapl_energy.o"
     #pragma effect Energy::theEnergy
 
 external int print_energy(int i);
     #pragma linkname "print"
-    #pragma linkobj "../rapl-energy/target/debug/librapl_energy_c.a"
+    #pragma linkobj "/usr/local/lib/librapl_energy_c.a"
     #pragma linkobj "src/rapl_energy.o"
     #pragma effect Energy::theEnergy

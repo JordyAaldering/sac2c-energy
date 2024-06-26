@@ -1,12 +1,5 @@
-#include<unistd.h>
-
-extern const int rapl_amd_start(void **rapl_ptr);
-extern const int rapl_amd_stop(void *rapl_ptr, void **elapsed_ptr);
-extern const int rapl_intel_start(void **rapl_ptr);
-extern const int rapl_intel_stop(void *rapl_ptr, void **elapsed_ptr);
-extern const int rapl_print(void *elapsed_ptr);
-
-// gcc -std=c99 -c -o src/rapl_energy.o src/rapl_energy.c src/librapl_energy_c.a
+#include <unistd.h>
+#include "rapl_energy_c.h"
 
 static void *amd_ptr, *amd_elapsed_ptr;
 static void *intel_ptr, *intel_elapsed_ptr;
